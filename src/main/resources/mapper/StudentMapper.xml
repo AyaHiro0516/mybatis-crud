@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="cn.ayahiro.mybatis.mapper.StudentMapper">
+
+    <resultMap id="baseMap" type="Student">
+        <id property="id" column="id" jdbcType="INTEGER"/>
+        <result property="name" column="stu_name" jdbcType="VARCHAR"/>
+        <result property="gradeA" column="grade_a" jdbcType="DOUBLE"/>
+        <result property="gradeB" column="grade_b" jdbcType="DOUBLE"/>
+        <result property="gradeC" column="grade_c" jdbcType="DOUBLE"/>
+    </resultMap>
+
+    <!-- 查询所有 -->
+    <select id="findAll" resultMap="baseMap">
+        SELECT * FROM student
+    </select>
+
+    <!-- 根据id查询 -->
+    <select id="findById" parameterType="Integer" resultMap="baseMap">
+        SELECT * FROM student WHERE id = #{id}
+    </select>
+
+    <!-- 添加数据 -->
+    <insert id="create" parameterType="Student">
+        INSERT INTO student(stu_name, grade_a, grade_b, grade_c)
+        VALUES(#{name}, #{gradeA}, #{gradeB}, #{gradeC})
+    </insert>
+
+    <!-- 更新数据 -->
+    <update id="update" parameterType="Student">
+        UPDATE student
+        <set>
+            <if test="name != null">
+                stu_name = #{name},
+            </if>
+            <if test="gradeA != null">
+                grade_a = #{gradeA},
+            </if>
+            <if test="gradeB != null">
+                grade_b = #{gradeB},
+            </if>
+            <if test="gradeC != null">
+                grade_c = #{gradeC},
+            </if>
+        </set>
+        WHERE id = #{id}
+    </update>
+
+    <!-- 删除 -->
+    <delete id="delete" parameterType="Integer">
+        DELETE FROM student WHERE id = #{id}
+    </delete>
+
+    <!-- 删除全部 -->
+    <delete id="deleteAll">
+        DELETE FROM student
+    </delete>
+</mapper>

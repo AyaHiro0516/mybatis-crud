@@ -1,5 +1,6 @@
-package cn.ayahiro.mybatis.entity;
+package cn.ayahiro.mybatis.config.security;
 
+import cn.ayahiro.mybatis.entity.User;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.security.core.userdetails.UserDetails;

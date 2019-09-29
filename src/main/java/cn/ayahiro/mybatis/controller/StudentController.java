@@ -1,7 +1,7 @@
 package cn.ayahiro.mybatis.controller;
 
 import cn.ayahiro.mybatis.entity.Result;
-import cn.ayahiro.mybatis.entity.SearchDto;
+import cn.ayahiro.mybatis.entity.dto.SearchDto;
 import cn.ayahiro.mybatis.entity.Student;
 import cn.ayahiro.mybatis.service.StudentService;
 import com.github.pagehelper.PageHelper;
@@ -72,5 +72,10 @@ public class StudentController {
     @RequestMapping(path = {"/index"}, method = RequestMethod.GET)
     public String index() {
         return "hello ayahiro!";
+    }
+
+    @RequestMapping(path = {"/auth"}, method = RequestMethod.GET)
+    public String auth() {
+        return "通过验证才可以看到的信息！";
     }
 }

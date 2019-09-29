@@ -3,7 +3,7 @@ package cn.ayahiro.mybatis.controller;
 import cn.ayahiro.mybatis.entity.Result;
 import cn.ayahiro.mybatis.entity.User;
 import cn.ayahiro.mybatis.service.UserService;
-import cn.ayahiro.mybatis.utils.MD5Util;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
@@ -19,10 +19,13 @@ public class UserController {
     @Resource(name = "userServiceImpl")
     private UserService userService;
 
+    @Resource(name = "bCryptPasswordEncoder")
+    private BCryptPasswordEncoder bCryptPasswordEncoder;
+
     @RequestMapping(path = {"/register"}, method = RequestMethod.POST)
     public Result register(@RequestBody User user) {
         try {
-            user.setPassword(MD5Util.encode(user.getPassword()));
+            user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
             userService.register(user);
             return new Result(true, "创建成功");
         } catch (Exception e) {

@@ -1,6 +1,6 @@
 package cn.ayahiro.mybatis.service.impl;
 
-import cn.ayahiro.mybatis.entity.SearchDto;
+import cn.ayahiro.mybatis.entity.dto.SearchDto;
 import cn.ayahiro.mybatis.entity.Student;
 import cn.ayahiro.mybatis.mapper.StudentMapper;
 import cn.ayahiro.mybatis.service.StudentService;

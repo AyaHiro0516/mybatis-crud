@@ -1,5 +1,6 @@
-package cn.ayahiro.mybatis.entity;
+package cn.ayahiro.mybatis.entity.dto;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -7,7 +8,7 @@ import java.util.List;
  * @Description:
  * @Create: 2019/9/18
  */
-public class SearchDto {
+public class SearchDto implements Serializable {
     private String type;
     private List<String> index;
 

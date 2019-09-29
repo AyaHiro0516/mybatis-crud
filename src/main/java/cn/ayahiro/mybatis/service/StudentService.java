@@ -1,6 +1,6 @@
 package cn.ayahiro.mybatis.service;
 
-import cn.ayahiro.mybatis.entity.SearchDto;
+import cn.ayahiro.mybatis.entity.dto.SearchDto;
 import cn.ayahiro.mybatis.entity.Student;
 
 import java.util.List;

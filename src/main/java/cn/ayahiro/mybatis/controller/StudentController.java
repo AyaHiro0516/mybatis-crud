@@ -6,6 +6,7 @@ import cn.ayahiro.mybatis.entity.Student;
 import cn.ayahiro.mybatis.service.StudentService;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
@@ -74,8 +75,9 @@ public class StudentController {
         return "hello ayahiro!";
     }
 
-    @RequestMapping(path = {"/auth"}, method = RequestMethod.GET)
+    @RequestMapping(path = {"/admin"}, method = RequestMethod.GET)
+    @PreAuthorize("hasRole('ADMIN')")
     public String auth() {
-        return "通过验证才可以看到的信息！";
+        return "需要ADMIN角色才可以看到的信息！";
     }
 }

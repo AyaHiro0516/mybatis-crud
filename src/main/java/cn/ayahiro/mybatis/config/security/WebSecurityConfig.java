@@ -2,6 +2,8 @@ package cn.ayahiro.mybatis.config.security;
 
 import cn.ayahiro.mybatis.config.jwt.JWTAuthenticationFilter;
 import cn.ayahiro.mybatis.config.jwt.JWTAuthorizationFilter;
+import cn.ayahiro.mybatis.exception.JWTAccessDeniedHandler;
+import cn.ayahiro.mybatis.exception.JWTAuthenticationEntryPoint;
 import cn.ayahiro.mybatis.service.impl.UserDetailsServiceImpl;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -58,7 +60,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .addFilter(new JWTAuthenticationFilter(authenticationManager()))
                 .addFilter(new JWTAuthorizationFilter(authenticationManager()))
                 // 不需要session
-                .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
+                .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+                .and()
+                .exceptionHandling().authenticationEntryPoint(new JWTAuthenticationEntryPoint())
+                .accessDeniedHandler(new JWTAccessDeniedHandler());
 
 //        ExpressionUrlAuthorizationConfigurer<HttpSecurity>.ExpressionInterceptUrlRegistry registry = http
 //                .authorizeRequests();

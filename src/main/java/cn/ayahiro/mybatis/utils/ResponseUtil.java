@@ -6,7 +6,6 @@ import com.google.gson.Gson;
 import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.Map;
 
 /**
  * @Author ayahiro

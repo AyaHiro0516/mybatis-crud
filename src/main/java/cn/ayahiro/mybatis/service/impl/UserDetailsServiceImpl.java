@@ -1,6 +1,6 @@
 package cn.ayahiro.mybatis.service.impl;
 
-import cn.ayahiro.mybatis.config.security.SecurityUserDetails;
+import cn.ayahiro.mybatis.config.jwt.JwtUser;
 import cn.ayahiro.mybatis.entity.User;
 import cn.ayahiro.mybatis.service.UserService;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -24,6 +24,6 @@ public class UserDetailsServiceImpl implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         User user = userService.findByUsername(username);
-        return new SecurityUserDetails(user);
+        return new JwtUser(user);
     }
 }

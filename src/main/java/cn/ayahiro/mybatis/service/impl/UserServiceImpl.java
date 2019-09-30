@@ -1,7 +1,6 @@
 package cn.ayahiro.mybatis.service.impl;
 
 import cn.ayahiro.mybatis.entity.User;
-import cn.ayahiro.mybatis.mapper.StudentMapper;
 import cn.ayahiro.mybatis.mapper.UserMapper;
 import cn.ayahiro.mybatis.service.UserService;
 import org.springframework.stereotype.Service;
